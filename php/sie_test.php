@@ -84,11 +84,15 @@ HTML_BLOCK;
 				echo "<p>Filen innehöll fel</p><hr/>";
 			}
 		}
+		else
+		{
+			$_POST['sie'] = '';
+		}
 
 		echo <<<HTML_BLOCK
 			<form action='?' method='post'>
 				<input type='submit' value='Validate SIE data' /><br />
-				<textarea name='sie' style='min-width: 1000px; min-height: 400px;'></textarea>
+				<textarea name='sie' style='min-width: 1000px; min-height: 400px;'>{$_POST['sie']}</textarea>
 			</form>
 	</body>
 </html>
