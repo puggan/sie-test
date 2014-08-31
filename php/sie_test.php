@@ -50,12 +50,12 @@
 
 			if($result)
 			{
-				echo "OK file: '{$file}'\n";
+				echo "SIE-parsing OK in file: '{$file}'\n";
 				continue;
 			}
 			else
 			{
-				trigger_error("Errors in file: '{$file}'");
+				trigger_error("SIE-parsing Errors in file: '{$file}'");
 				continue;
 			}
 		}
