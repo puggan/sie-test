@@ -4,6 +4,7 @@
 
 	/**
 	 * Class Sie
+	 *
 	 * @package Puggan\Sie
 	 */
 	class Sie
@@ -15,7 +16,7 @@
 		 *
 		 * @return self
 		 */
-		static function loadFile($file_name)
+		public static function loadFile($file_name)
 		{
 			$sie = new self();
 			// TODO
