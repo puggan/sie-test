@@ -26,12 +26,25 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: composer install -n --prefer-dist
+      - run:
+          name: Display PHP information
+          command: |
+            php -v
+            composer --version
+
+      - run:
+          name: Install project dependencies
+          command: composer install -n --prefer-dist
 
       - save_cache:
           paths:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
 
-      # run tests!
-      - run: vendor/bin/phpunit
+      - run:
+          name: Run CS tests
+          command: vendor/bin/phpcs
+
+      - run:
+          name: Run Unit tests
+          command: vendor/bin/phpunit
