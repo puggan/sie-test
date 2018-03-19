@@ -43,7 +43,7 @@ jobs:
 
       - run:
           name: Run CS tests
-          command: vendor/bin/phpcs src/
+          command: vendor/bin/phpcs -s --report-width=200 src/
 
       - run:
           name: Run Unit tests
