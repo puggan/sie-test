@@ -3,11 +3,11 @@
 	namespace Puggan\Sie;
 
 	/**
-	 * Class Sie
+	 * Class Sie4
 	 *
 	 * @package Puggan\Sie
 	 */
-	class Sie
+	class Sie4
 	{
 		/**
 		 * Load a SIE file from filesystem
