@@ -8,7 +8,7 @@
 	 *
 	 * @package Puggan\Sie
 	 */
-	class FileException extends SieException
+	class SieException extends \Exception
 	{
 
 	}
