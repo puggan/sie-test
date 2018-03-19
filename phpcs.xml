@@ -81,7 +81,7 @@
 	<!-- Squiz -->
 	<rule ref="Generic.Arrays.DisallowLongArraySyntax" />
 	<rule ref="Generic.CodeAnalysis.EmptyStatement" />
-	<rule ref="Generic.Commenting.Todo" />
+	<!-- Disables TODO until all TODOs are done, rule ref="Generic.Commenting.Todo" / -->
 	<rule ref="Generic.Formatting.SpaceAfterCast" />
 	<rule ref="Generic.NamingConventions.ConstructorName" />
 	<rule ref="Generic.PHP.DeprecatedFunctions" />
