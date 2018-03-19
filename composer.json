@@ -1,0 +1,16 @@
+{
+    "name": "puggan/sie",
+    "description": "Handeling Swedish Ecomomy files SIE",
+    "type": "library",
+    "require": {
+        "php": "^7.1"
+    },
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Thorbjörn Backlund",
+            "email": "thorbjorn@spiro.se"
+        }
+    ],
+    "minimum-stability": "stable"
+}
