@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<ruleset name="Puggans" namespace="Puggan">
+	<description>Puggans coding standard</description>
+	<arg name="tab-width" value="4" />
+
+	<!-- Force use of tabs -->
+	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent" />
+	<!-- Unix fileendings -->
+	<rule ref="Generic.Files.LineEndings" />
+	<!-- Line width 80/100 -->
+	<rule ref="Generic.Files.LineLength" />
+
+	<!-- Disabled, always one off
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="indent" value="4" />
+			<property name="exact" value="true" />
+			<property name="tabIndent" value="true" />
+		</properties>
+	</rule>
+	-->
+
+	<!-- PSR 1, section 2.1 -->
+	<rule ref="Generic.PHP.DisallowShortOpenTag" />
+	<!-- PSR 1, section 2.2 -->
+	<rule ref="Generic.Files.ByteOrderMark" />
+	<!-- PSR 1, section 3 -->
+	<rule ref="Squiz.Classes.ValidClassName" />
+	<!-- PSR 1, section 4.1 -->
+	<rule ref="Generic.NamingConventions.UpperCaseConstantName" />
+
+	<!-- Zend -->
+	<rule ref="Generic.Functions.FunctionCallArgumentSpacing" />
+	<rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman" />
+	<rule ref="PEAR.Classes.ClassDeclaration" />
+	<rule ref="PEAR.Functions.FunctionCallSignature" />
+	<rule ref="PEAR.Functions.ValidDefaultValue" />
+	<rule ref="PEAR.WhiteSpace.ScopeClosingBrace" />
+	<rule ref="Squiz.Functions.GlobalFunction" />
+	<!-- rule ref="Generic.WhiteSpace.DisallowTabIndent"/ -->
+	<rule ref="PEAR.ControlStructures.ControlSignature">
+		<exclude name="PEAR.ControlStructures.ControlSignature.Found" />
+	</rule>
+	<!-- PEAR -->
+	<rule ref="Squiz.Commenting.DocCommentAlignment" />
+	<rule ref="Generic.ControlStructures.InlineControlStructure" />
+	<!-- rule ref="Generic.PHP.LowerCaseConstant"/ -->
+	<rule ref="Generic.Commenting.DocComment">
+		<exclude name="Generic.Commenting.DocComment.MissingShort" />
+	</rule>
+
+	<!-- PSR 2 -->
+	<!-- PSR 2 Section 2.3 -->
+	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace" />
+	<rule ref="Generic.Formatting.DisallowMultipleStatements" />
+	<!-- PSR 2 Section 2.5 -->
+	<rule ref="Generic.PHP.LowerCaseKeyword" />
+	<!-- PSR 2 Section 4.3 -->
+	<rule ref="Squiz.Scope.MethodScope" />
+	<rule ref="Squiz.WhiteSpace.ScopeKeywordSpacing" />
+	<rule ref="Squiz.Functions.FunctionDeclaration" />
+	<rule ref="Squiz.Functions.LowercaseFunctionKeywords" />
+	<!-- PSR 2 Section 4.4 -->
+	<rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing" />
+	<rule ref="Squiz.Functions.MultiLineFunctionDeclaration" />
+
+	<!-- PSR 2 Section 4.6 -->
+	<rule ref="PSR2.Methods.FunctionCallSignature" />
+
+	<!-- PSR 2 Section 5 -->
+	<rule ref="Squiz.ControlStructures.ControlSignature">
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis" />
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterKeyword" />
+	</rule>
+	<rule ref="Squiz.WhiteSpace.ControlStructureSpacing" />
+	<rule ref="Squiz.WhiteSpace.ScopeClosingBrace" />
+	<rule ref="Squiz.ControlStructures.ForEachLoopDeclaration" />
+	<rule ref="Squiz.ControlStructures.ForLoopDeclaration" />
+	<rule ref="Squiz.ControlStructures.LowercaseDeclaration" />
+
+	<!-- Squiz -->
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+	<rule ref="Generic.CodeAnalysis.EmptyStatement" />
+	<rule ref="Generic.Commenting.Todo" />
+	<rule ref="Generic.Formatting.SpaceAfterCast" />
+	<rule ref="Generic.NamingConventions.ConstructorName" />
+	<rule ref="Generic.PHP.DeprecatedFunctions" />
+	<rule ref="Generic.Strings.UnnecessaryStringConcat" />
+	<rule ref="PEAR.Files.IncludingFile" />
+	<rule ref="PEAR.Formatting.MultiLineAssignment" />
+	<rule ref="PSR2.Files.EndFileNewline" />
+	<rule ref="Zend.Files.ClosingTag" />
+	<rule ref="Zend.Debug.CodeAnalyzer" />
+
+	<!-- We allow empty catch statements -->
+	<rule ref="Generic.CodeAnalysis.EmptyStatement.DetectedCATCH" />
+
+	<!-- We don't want gsjlint throwing errors for things we already check -->
+	<rule ref="Generic.Debug.ClosureLinter">
+		<properties>
+			<property name="errorCodes" type="array" value="0210" />
+			<property name="ignoreCodes" type="array" value="0001,0110,0240" />
+		</properties>
+	</rule>
+	<rule ref="Generic.Debug.ClosureLinter.ExternalToolError">
+		<message>%2$s</message>
+	</rule>
+
+	<!-- Only one argument per line in multi-line function calls -->
+	<rule ref="PEAR.Functions.FunctionCallSignature">
+		<properties>
+			<property name="allowMultipleArguments" value="false" />
+		</properties>
+	</rule>
+
+	<!-- We use custom indent rules for arrays -->
+	<rule ref="Generic.Arrays.ArrayIndent" />
+	<rule ref="Squiz.Arrays.ArrayDeclaration.CloseBraceNewLine" />
+</ruleset>
