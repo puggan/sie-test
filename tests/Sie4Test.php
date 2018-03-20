@@ -1,7 +1,5 @@
 <?php
 
-	declare(strict_types=1);
-
 	use PHPUnit\Framework\TestCase;
 	use Puggan\Sie\Sie4;
 
@@ -9,13 +7,13 @@
 	{
 		public $base_file = __DIR__ . '/files/Sie4.se';
 
-		public function testCreateFromFile(): void
+		public function testCreateFromFile()
 		{
 			$sie = Sie4::loadFile($this->base_file);
 			$this->assertInstanceOf(Sie4::class, $sie);
 		}
 
-		public function testSave(): void
+		public function testSave()
 		{
 			$tmp_file = tempnam(sys_get_temp_dir(), 'sie_');
 			$sie = Sie4::loadFile($this->base_file);
