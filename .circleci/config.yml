@@ -4,15 +4,9 @@
 #
 version: 2
 jobs:
-  build:
+  build-php71:
     docker:
-      # specify the version you desire here
       - image: circleci/php:7.1-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mysql:9.4
 
     working_directory: ~/repo
 
@@ -22,9 +16,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "composer.json" }}
+          - php71-dependencies-{{ checksum "composer.json" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - php71-dependencies-
 
       - run:
           name: Display PHP information
@@ -39,12 +33,54 @@ jobs:
       - save_cache:
           paths:
             - ./vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
-
-      - run:
-          name: Run CS tests
-          command: vendor/bin/phpcs -s --report-width=200 src/
+          key: php71-dependencies-{{ checksum "composer.json" }}
 
       - run:
           name: Run Unit tests
           command: vendor/bin/phpunit
+
+      - run:
+          name: Run CodeStyle tests
+          command: vendor/bin/phpcs -s --report-width=200 src/
+
+  build-php72:
+    docker:
+      - image: circleci/php:7.2-node-browsers
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - php72-dependencies-{{ checksum "composer.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - php72-dependencies-
+
+      - run:
+          name: Display PHP information
+          command: |
+            php -v
+            composer --version
+
+      - run:
+          name: Install project dependencies
+          command: composer install -n --prefer-dist
+
+      - save_cache:
+          paths:
+            - ./vendor
+          key: php72-dependencies-{{ checksum "composer.json" }}
+
+      - run:
+          name: Run Unit tests
+          command: vendor/bin/phpunit
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-php71
+      - build-php72
