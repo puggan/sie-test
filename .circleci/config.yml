@@ -78,9 +78,117 @@ jobs:
           name: Run Unit tests
           command: vendor/bin/phpunit
 
+  build-php70:
+    docker:
+      - image: circleci/php:7.0-node-browsers
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - php70-dependencies-{{ checksum "composer.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - php70-dependencies-
+
+      - run:
+          name: Display PHP information
+          command: |
+            php -v
+            composer --version
+
+      - run:
+          name: Install project dependencies
+          command: composer install -n --prefer-dist
+
+      - save_cache:
+          paths:
+            - ./vendor
+          key: php70-dependencies-{{ checksum "composer.json" }}
+
+      - run:
+          name: Run Unit tests
+          command: vendor/bin/phpunit
+
+  build-php56:
+    docker:
+      - image: circleci/php:5.6-node-browsers
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - php56-dependencies-{{ checksum "composer.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - php56-dependencies-
+
+      - run:
+          name: Display PHP information
+          command: |
+            php -v
+            composer --version
+
+      - run:
+          name: Install project dependencies
+          command: composer install -n --prefer-dist
+
+      - save_cache:
+          paths:
+            - ./vendor
+          key: php56-dependencies-{{ checksum "composer.json" }}
+
+      - run:
+          name: Run Unit tests
+          command: vendor/bin/phpunit
+
+  build-php73:
+    docker:
+      - image: circleci/php:7.3-node-browsers
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - php73-dependencies-{{ checksum "composer.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - php73-dependencies-
+
+      - run:
+          name: Display PHP information
+          command: |
+            php -v
+            composer --version
+
+      - run:
+          name: Install project dependencies
+          command: composer install -n --prefer-dist
+
+      - save_cache:
+          paths:
+            - ./vendor
+          key: php73-dependencies-{{ checksum "composer.json" }}
+
+      - run:
+          name: Run Unit tests
+          command: vendor/bin/phpunit
+
 workflows:
   version: 2
   build:
     jobs:
       - build-php71
       - build-php72
+      - build-php70
+      - build-php56
+      #- build-php73
