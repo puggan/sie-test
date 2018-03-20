@@ -69,6 +69,7 @@
 
 	<!-- PSR 2 Section 5 -->
 	<rule ref="Squiz.ControlStructures.ControlSignature">
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace" />
 		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis" />
 		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterKeyword" />
 	</rule>
